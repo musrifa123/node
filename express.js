@@ -23,6 +23,15 @@ client.connect(err => {
 });
 
 
+app.post('/search',async (req,res) => {
+    console.log(req.body);
+    res.send('get search')
+    const datafromdb = await client
+    .db("muchiii")
+    .collection("soogle-data")
+    .findOne({keyword: req.body.search_key})
+
+})
 
 app.get('/', (req, res) => {
     client.db("blah").collection("devices").insertOne({key:"value"});
